@@ -1,0 +1,12 @@
+
+
+@mixin flexo($wrap, $direction, $jusitfy, $align) {
+    display: flex;
+    flex: {
+        wrap: $wrap;
+        direction: $direction;
+    }
+
+    justify-content: $jusitfy;
+    align-items: $align;
+}

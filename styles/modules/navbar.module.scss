@@ -1,0 +1,72 @@
+@import "../partials/variables";
+@import "../partials/mixins";
+@import "../globals.scss";
+
+
+
+.nav {
+    background-color: $color-dark;
+    color: white;
+    width: 100%;
+    padding: 1rem;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999;
+
+}
+
+
+.mainNav {
+    background-color: none;
+    text-transform: uppercase;
+    
+    @extend .container;
+    @include flexo(nowrap, row, space-between, center);
+}
+
+
+
+.leftDiv {
+    flex: 50%;
+    @media (max-width: $screen-medium) {
+        flex: 30%;
+    }
+
+    font: {
+        size: clamp(1.2rem, 2.3vw, 3rem);
+        weight: 700;
+    }
+    color: $color-primary;
+
+    //nested
+    span{
+        color: rgb(228, 228, 228);
+
+    }
+}
+
+.rightDiv {
+    flex: 40%;
+
+    @media (max-width: $screen-medium) {
+        flex: 70%;
+    }
+
+    @include flexo(wrap, row, space-between, center);
+
+    p {
+        color: $color-muted;
+
+        &:hover{
+            color: $color-primary;
+            cursor: pointer;
+        }
+    }
+}
+
+// .linkStyle {
+//     color: white;
+//     text-decoration: none;
+// }

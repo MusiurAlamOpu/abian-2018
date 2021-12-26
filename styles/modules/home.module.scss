@@ -1,0 +1,30 @@
+@import "../globals.scss";
+@import "../partials/mixins";
+@import "../partials/variables";
+
+
+.heroSectionRoot {
+    @extend .container;
+
+    div {
+        @include flexo(nowrap, row, space-between, center);
+
+        div {
+            flex: 50%;
+
+            @include flexo(nowrap, column, flex-start, center);
+
+            div {
+                h1 {
+
+                color: $color-gray;
+
+                span {
+                    font-weight: 500;
+                    color: $color-gray;
+                }
+            }
+            }
+        }
+    }
+}
