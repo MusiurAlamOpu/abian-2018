@@ -7,10 +7,12 @@ import 'swiper/css';
 import "swiper/css/pagination"
 import "swiper/css/navigation"
 
+
 // import Swiper core and required modules
 import SwiperCore, {
     Autoplay, Pagination, Navigation
 } from 'swiper';
+
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -19,15 +21,6 @@ const Carousel = () => {
     let slides = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return (
         <Swiper
-            // spaceBetween={50}
-            // slidesPerView={3}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
-            // autoplay={{
-            //     "delay": 2500,
-            //     "disableOnInteraction": false
-            // }}
-            // pagination={{ "clickable": true }}
             navigation={true}
             slidesPerView={1}
             spaceBetween={10}

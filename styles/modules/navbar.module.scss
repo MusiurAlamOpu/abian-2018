@@ -5,24 +5,28 @@
 
 
 .nav {
-    background-color: $color-dark;
-    color: white;
-    width: 100%;
-    padding: 1rem;
+    background-color: $color-bg-dark;
     position: sticky;
     top: 0;
     right: 0;
     left: 0;
     z-index: 9999;
+    @extend .container;
 
 }
 
 
 .mainNav {
+
     background-color: none;
     text-transform: uppercase;
+    padding: {
+        top: 1rem;
+        bottom: 1rem;
+    }
+
+    // padding: 1rem 0;
     
-    @extend .container;
     @include flexo(nowrap, row, space-between, center);
 }
 
@@ -30,12 +34,13 @@
 
 .leftDiv {
     flex: 50%;
-    @media (max-width: $screen-medium) {
-        flex: 30%;
-    }
+    // padding: {
+    //     top: 1rem;
+    //     bottom: 1rem;
+    // }
 
     font: {
-        size: clamp(1.2rem, 2.3vw, 3rem);
+        size: clamp(2rem, 2.3vw, 3rem);
         weight: 700;
     }
     color: $color-primary;
@@ -49,6 +54,10 @@
 
 .rightDiv {
     flex: 40%;
+    @media (max-width: $screen-tablet) {
+        display: none;
+        
+    }
 
     @media (max-width: $screen-medium) {
         flex: 70%;
@@ -65,8 +74,3 @@
         }
     }
 }
-
-// .linkStyle {
-//     color: white;
-//     text-decoration: none;
-// }

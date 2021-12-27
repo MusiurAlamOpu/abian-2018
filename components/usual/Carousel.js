@@ -11,6 +11,7 @@ import "swiper/css/navigation"
 import SwiperCore, {
     Autoplay, Pagination, Navigation
 } from 'swiper';
+import Image from "next/image";
 
 // install Swiper modules
 SwiperCore.use([Autoplay, Pagination, Navigation]);
@@ -19,16 +20,7 @@ const Carousel = () => {
     let slides = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     return (
         <Swiper
-            // spaceBetween={50}
-            // slidesPerView={3}
-            // onSlideChange={() => console.log('slide change')}
-            // onSwiper={(swiper) => console.log(swiper)}
-            // autoplay={{
-            //     "delay": 2500,
-            //     "disableOnInteraction": false
-            // }}
-            // pagination={{ "clickable": true }}
-            navigation={true}
+            // navigation={true}
             slidesPerView={1}
             spaceBetween={10}
             pagination={{
@@ -41,35 +33,35 @@ const Carousel = () => {
             }}
             breakpoints={{
                 640: {
-                    slidesPerView: 2,
+                    slidesPerView: 1,
                     spaceBetween: 5,
                 },
                 768: {
-                    slidesPerView: 3,
+                    slidesPerView: 2,
                     spaceBetween: 10,
                 },
                 1024: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
                     spaceBetween: 15,
                 },
                 1280: {
-                    slidesPerView: 4,
+                    slidesPerView: 3,
                     spaceBetween: 20,
                 },
                 1536: {
-                    slidesPerView: 5,
+                    slidesPerView: 4,
                     spaceBetween: 20,
                 },
                 2048: {
-                    slidesPerView: 6,
+                    slidesPerView: 4,
                     spaceBetween: 20,
                 },
                 3840: {
-                    slidesPerView: 7,
+                    slidesPerView: 5,
                     spaceBetween: 20,
                 },
                 7680: {
-                    slidesPerView: 10,
+                    slidesPerView: 7,
                     spaceBetween: 20,
                 },
             }}
@@ -82,7 +74,22 @@ const Carousel = () => {
                             key={i}
                             className={carouselStyles.carouselSlides}
                         >
-                            Slide ${slideData}
+                            <div className={carouselStyles.imgs}>.</div>
+                            <div className={carouselStyles.textDiv}>
+                                <li>Give Food to Homeless Children</li>
+                                <span>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia.</span>
+                            </div>
+                            <div className={carouselStyles.footerDiv}>
+                                <div className={carouselStyles.progressBar}>
+                                    <div></div>
+                                    <li>70%</li>
+                                </div>
+                                <div className={carouselStyles.donationFooter}>
+                                    <p>Raised $544</p>
+                                    <p>Goal $877</p>
+                                </div>
+                            </div>
+
                         </SwiperSlide>
                     )
                 })
