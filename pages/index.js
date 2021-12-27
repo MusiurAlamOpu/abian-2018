@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Carousel from "/components/usual/carousel";
+import Carousel from "/components/usual/Carousel";
 import HomeStyles from "../styles/modules/home.module.scss";
 const index = () => {
 
