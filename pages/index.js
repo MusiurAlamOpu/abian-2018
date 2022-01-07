@@ -98,7 +98,6 @@ const index = () => {
         <div className={HomeStyles.statisticsCouter}>
           {
             statistics.map((data, i) => {
-              console.log(data);
               return (
                 <div key={i}>
                   <p className={HomeStyles.counterStyle}>{data.counter}+</p>

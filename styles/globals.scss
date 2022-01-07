@@ -1,18 +1,18 @@
 @import "./partials/variables";
 @import "./partials/mixins";
 
-.inputStyle {
-  width: 94%;
-  background-color: white;
-  border: 1px solid lightgray;
-  color: gray;
-  outline: none;
-  padding: 2% 3%;
+// .inputStyle {
+//   width: 94%;
+//   background-color: white;
+//   border: 1px solid lightgray;
+//   color: gray;
+//   outline: none;
+//   padding: 2% 3%;
 
-}
-.inputStyle:hover {
-  box-shadow: 2px 2px 5px lightgray;
-}
+// }
+// .inputStyle:hover {
+//   box-shadow: 2px 2px 5px lightgray;
+// }
 
 .labelStyle {
   font-size: clamp(1rem, 2vw, 2rem);
@@ -133,6 +133,32 @@
 
   color: $color-gray;
   background-image: linear-gradient(to right, #c5c5c5, $color-muted);
+}
+
+
+.inputStyle {
+  outline: none;
+  border: 1px solid lightgray;
+  font-size: 1rem;
+  width: 90%;
+  padding: 10px 5%;
+  box-shadow: 1px 1px 2px #ececec;
+  border-radius: 30px;
+  margin: {
+    top: 5px;
+    bottom: 10px;
+  }
+
+
+  
+  &:hover {
+    box-shadow: 1px 2px 4px lightgray;
+    border: 1px solid #d3d3d3;
+  }
+  &:focus {
+    box-shadow: 1px 2px 4px #b8b8b8;
+    border: 1px solid #bbbbbb;
+  }
 }
 
 

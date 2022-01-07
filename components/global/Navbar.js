@@ -1,11 +1,19 @@
 
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-// import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import navStyles from '../../styles/modules/navbar.module.scss'
 
 const Navbar = () => {
-    // const [openMobileNav, setOpenMobileNav] = useState(false);
+    const [openMobileNav, setOpenMobileNav] = useState(false);
+    const router = useRouter();
+
+    useEffect(() => {
+        setOpenMobileNav(false);
+    }, [router]);
 
     const links = [
         {
@@ -39,8 +47,39 @@ const Navbar = () => {
                 <div className={navStyles.rightDiv}>
                     {
                         links.map((data, i) => {
+                            console.log(data.link === router.pathname);
+
                             return (
-                                <div key={i}>
+                                <div key={i} style={{ color: `${data.link === router.pathname ? "orange" : "white"}` }}>
+                                    {
+
+                                        <Link href={data.link} >
+                                            {
+                                                data.linkName === "Login" ?
+                                                    <button className="btn-nav">
+                                                        {data.linkName}
+                                                    </button>
+                                                    :
+                                                    <p>{data.linkName}</p>
+                                            }
+                                        </Link>
+
+                                    }
+                                </div>
+                            )
+                        })
+                    }
+                </div>
+                <div className={navStyles.barIcon} onClick={() => setOpenMobileNav(!openMobileNav)}>
+                    <FontAwesomeIcon icon={faBars} />
+                </div>
+            </div>
+            {openMobileNav &&
+                <div className={navStyles.mobileNav}>
+                    {
+                        links.map((data, i) => {
+                            return (
+                                <div key={i} style={{ color: `${data.link === router.pathname ? "orange" : "white"}` }}>
                                     {
 
                                         <Link href={data.link}>
@@ -60,7 +99,7 @@ const Navbar = () => {
                         })
                     }
                 </div>
-            </div>
+            }
         </nav>
     )
 }

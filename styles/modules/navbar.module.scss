@@ -24,8 +24,6 @@
         top: 1rem;
         bottom: 1rem;
     }
-
-    // padding: 1rem 0;
     
     @include flexo(nowrap, row, space-between, center);
 }
@@ -34,10 +32,6 @@
 
 .leftDiv {
     flex: 50%;
-    // padding: {
-    //     top: 1rem;
-    //     bottom: 1rem;
-    // }
 
     font: {
         size: clamp(2rem, 2.3vw, 3rem);
@@ -45,7 +39,7 @@
     }
     color: $color-primary;
 
-    //nested
+    // nested
     span{
         color: rgb(228, 228, 228);
 
@@ -66,11 +60,36 @@
     @include flexo(wrap, row, space-between, center);
 
     p {
-        color: $color-muted;
+        // color: $color-muted;
 
         &:hover{
             color: $color-primary;
             cursor: pointer;
         }
+    }
+}
+
+.barIcon {
+    display: none;
+
+    @media (max-width: $screen-tablet) {
+        font-size: 1.5rem;
+        color: white;
+        display: block;
+        
+    }
+}
+
+.mobileNav {
+    min-height: 100vh;
+    text-align: left;
+
+    p {
+        margin: 1rem 0;
+        // color: white;
+    }
+
+    button {
+        margin-top: 1rem;
     }
 }
