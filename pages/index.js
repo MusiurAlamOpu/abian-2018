@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Carousel from "/components/usual/Carousel";
 import HomeStyles from "../styles/modules/home.module.scss";
+import DevelopmentOnGoing from "../components/usual/DevelopmentOnGoing";
 const index = () => {
 
 
@@ -129,6 +130,8 @@ const index = () => {
         </div>
 
       </section>
+
+      <DevelopmentOnGoing />
     </>
   )
 }
