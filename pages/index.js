@@ -1,19 +1,60 @@
+/***
+ * 
+ * Title: Home page
+ * 
+ * Author: Musiur Alam Opu
+ * 
+ * Date: 1/28/2022
+ * 
+ */
+
+
+
+//dependencies
 import Image from "next/image";
 import Carousel from "/components/usual/Carousel";
 import HomeStyles from "../styles/modules/home.module.scss";
 import DevelopmentOnGoing from "../components/usual/DevelopmentOnGoing";
-const index = () => {
+import Olect from "../components/RawCompBuilder/FormElements/Olect";
+import { useEffect, useState } from "react";
+import Oradio from "../components/RawCompBuilder/FormElements/Oradio";
 
 
+//form data object scaffolding
+const InitialFormData = { full_name: "", email: "", causes: "", payment_method: "", amount: "" };
+
+//main function
+const Index = () => {
+
+  //form data managing states
+  const [formData, setFormData] = useState(InitialFormData);
+  const [errorMessage, setErrorMessage] = useState(formData);
+
+
+  //adding values to the state
   const handleOnChange = (e) => {
-    console.log(e.target.value);
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
   }
 
-  const handleSubmit = (e) => {
+  //checking errors on submit
+  const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log("Submited")
+    setErrorMessage(validator(formData));
   }
 
+  //action on errors
+  useEffect(() => {
+    if (Object.keys(errorMessage).length === 0) {
+      console.log(formData);
+    } else {
+      console.log(errorMessage);
+    }
+  }, [errorMessage]);
+
+  //donation form element data for section of causes and payment method
+  const causesList = ["Food", "Cloth", "Education", "Others"];
+  const paymentMethods = ["bKash", "Rocket", "Nagad"];
 
   return (
     <>
@@ -51,44 +92,42 @@ const index = () => {
           </div>
         </div>
 
+
         <div className={HomeStyles.donateRightDiv}>
-          <label htmlFor="fullName">Full name</label>
-          <input type="text" placeholder="Enter your full name..." className="fullName inputStyle" onChange={handleOnChange} />
+          <form>
+            <label htmlFor="fullName">Full name</label>
+            <input name="full_name" type="text" placeholder="Enter your full name..." className="fullName inputStyle donateInput" onChange={handleOnChange} />
 
-          <label htmlFor="emailAddress">Email address</label>
-          <input type="email" placeholder="Enter your email address..." className="emailAddress inputStyle" onChange={handleOnChange} />
+            <label htmlFor="emailAddress">Email address</label>
+            <input name="email" type="email" placeholder="Enter your email address..." className="emailAddress inputStyle donateInput" onChange={handleOnChange} />
 
-          <label htmlFor="causes">Cause</label>
-          <select type="select" className="causes inputStyle" defaultValue={"value 1"} onChange={handleOnChange}>
-            <option value="value 1">value 1</option>
-            <option value="value 2">value 2</option>
-            <option value="value 3">value 3</option>
-          </select>
+            <label htmlFor="causes">Cause</label>
+            <Olect
+              name="causes"
+              className="causes"
+              defaultValue="None"
+              options={causesList}
+              onChange={handleOnChange}
+            />
 
-          <label htmlFor="emailAddress">Amount you had given</label>
-          <input type="email" placeholder="Enter your email address..." className="emailAddress inputStyle" onChange={handleOnChange} />
+            <label htmlFor="emailAddress">Amount you had given</label>
+            <input name="amount" type="email" placeholder="Enter your email address..." className="emailAddress inputStyle donateInput" onChange={handleOnChange} />
 
-          <label htmlFor="paymentMethod">Payment type</label>
-          <div className={HomeStyles.radioSelection}>
+            <label htmlFor="paymentMethod">Payment type</label>
+            <div className={HomeStyles.radioSelection}>
+              {/* @TODO custom radio input tag will be added here  */}
+              <Oradio
+                name="payment_method"
+                className="paymentMethod"
+                onChange={handleOnChange}
+                options={paymentMethods}
+                defaultValue=""
+              />
 
-            <div>
-              <input type="radio" name="paymentMethod" value="" id="bKash" className="paymentMethod" onChange={handleOnChange} />
-              <label htmlFor="bKash">bKash</label>
             </div>
 
-            <div>
-              <input type="radio" name="paymentMethod" value="" id="Rocket" className="paymentMethod" onChange={handleOnChange} />
-              <label htmlFor="Rocket">Rocket</label>
-            </div>
-
-            <div>
-              <input type="radio" name="paymentMethod" value="" id="Nagad" className="paymentMethod" onChange={handleOnChange} />
-              <label htmlFor="Nagad">Nagad</label>
-            </div>
-
-          </div>
-
-          <button onClick={handleSubmit}>Donate now</button>
+            <button onClick={handleOnSubmit}>Donate now</button>
+          </form>
         </div>
       </section>
 
@@ -136,7 +175,42 @@ const index = () => {
   )
 }
 
-export default index;
+export default Index;
+
+const validator = (data) => {
+
+  //error object
+  let err = {};
+
+  //fullname validation
+  if (!data.full_name.trim()) {
+    err.full_name = "Full name is required!";
+  }
+
+  //email validation
+  if (!data.email.trim()) {
+    err.email = "Email is required!";
+  }
+
+  //causes validation
+  if (!data.causes.trim()) {
+    err.causes = "Causes are required!";
+  }
+
+  //amount validation
+  if (!data.amount.trim()) {
+    err.amount = "Amount is required";
+  }
+
+  //payment-method validation
+  if (!data.payment_method.trim()) {
+    err.payment_method = "Payment method is required!"
+  }
+
+
+
+  return err;
+}
 
 const cards = [
   {
